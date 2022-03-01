@@ -23,15 +23,24 @@ app.get('/app/', (req, res) => {
 });
 
 app.get('/app/flip/', (req, res) => {
-    res.json({ "flip" : coinFlip() })
+  res.statusCode = 200;
+  res.statusMessage = 'OK';
+  res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
+  res.json({ "flip" : coinFlip() })
 });
 
 app.get('/app/flips/:number', (req, res) => {
+  res.statusCode = 200;
+  res.statusMessage = 'OK';
+  res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
   let flips = coinFlips(req.params.number);
 	res.json({ "raw" : flips, "summary" : countFlips(flips)})
 });
 
 app.get('/app/flip/call/:bet', (req, res) => {
+  res.statusCode = 200;
+  res.statusMessage = 'OK';
+  res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
   let flip = flipACoin(req.params.bet);
   res.json({ "call" : flip.call, "flip" : flip.flip, "result" : flip.result})
 });
