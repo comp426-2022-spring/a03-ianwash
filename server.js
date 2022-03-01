@@ -32,9 +32,6 @@ app.get('/app/flips/:number', (req, res) => {
 });
 
 app.get('/app/flip/call/:bet', (req, res) => {
-  res.statusCode = 200;
-  res.statusMessage = 'OK';
-  res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
   let flip = flipACoin(req.params.bet);
   res.status(200).json({ "call" : flip.call, "flip" : flip.flip, "result" : flip.result})
 });
